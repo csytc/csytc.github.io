@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>总价格：{{totalPrice}}</h2>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                books: [{
+                    id: 110,
+                    name: "编程艺术",
+                    price: 119
+                }, {
+                    id: 111,
+                    name: "编程艺",
+                    price: 120
+                }, {
+                    id: 112,
+                    name: "编程",
+                    price: 121
+                }]
+            },
+            computed: { //多次调用只会执行一次
+                totalPrice() {
+                    let sum = 0;
+                    for (let i = 0; i < this.books.length; i++) {
+                        sum += this.books[i].price;
+                    }
+                    return sum
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

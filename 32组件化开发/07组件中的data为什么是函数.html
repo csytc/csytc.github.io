@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+    </div>
+    <template id="Cpn">
+    <div>当前计数：{{counter}}
+      <br>
+    <button @click="decrease">-</button>
+    <button @click="increase">+</button>
+  </div>
+  </template>
+    <script>
+        //注册组件
+        Vue.component("cpn", {
+            template: "#Cpn",
+            //为函数是想让每次都产生一个新的对象，使得每个组件独立
+            data() {
+                return {
+                    counter: 0
+                }
+            },
+            methods: {
+                increase() {
+                    this.counter++
+                },
+                decrease() {
+                    this.counter--
+                }
+            }
+        })
+        const app = new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+
+</html>

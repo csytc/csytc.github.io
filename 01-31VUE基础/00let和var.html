@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <button>1</button>
+    <button>2</button>
+    <button>3</button>
+    <script>
+        /*
+                          1.变量作用域：变量在什么范围内是可用的，
+                          
+                        */
+        //2.没有块级作用域引起的问题
+        if (true) {
+            var name = "why";
+        }
+        console.log(name);
+        //3.没有块级作用域引起的问题：for的块级：Es6中加入let是有if和for的块级作用域
+        let btns = document.getElementsByTagName("button")
+            // for (let i = 0; i < btns.length; i++) {
+            //     btns[i].addEventListener("click", function() {
+            //         console.log(`第${i+1}个按钮被点击`)
+            //     }, false)
+            // }
+            /*
+              ES5之前因为if和for没有块级作用域的概念，所以在很多时候，我们都必须借助function的作用域
+              来解决应用外面变量的问题：
+            */
+        for (var i = 0; i < btns.length; i++) {
+            (function(i) {
+                btns[i].addEventListener("click", function() {
+                    console.log(`第${i+1}个按钮被点击`);
+                }, false);
+            })(i);
+        }
+    </script>
+</body>
+
+</html>

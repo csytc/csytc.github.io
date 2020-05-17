@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-if="true">{{name}}</h2>
+        <!--根据是true还是false确定是否渲染-->
+        <h2 v-if="isTrue">{{name}}</h2>
+        <h1 v-else>isTruewei为false时，显示我</h1>
+    </div>
+    <div id="app1">
+        <h1 v-if="soccer>80">优秀</h1>
+        <h1 v-else-if="soccer>60">良好</h1>
+        <h1 v-else>不及格</h1>
+        <!-- 或者写成方法 -->
+        <h2>{{result}}</h2>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                name: "你好",
+                isTrue: true
+            },
+            method: {
+
+            }
+        })
+        const app1 = new Vue({
+            el: "#app1",
+            data: {
+                soccer: 50
+            },
+            computed: {
+                result() {
+                    let showMessage = "";
+                    if (this.soccer >= 80) {
+                        showMessage = "优秀"
+                    } else if (this.soccer >= 60) {
+                        showMessage = "良好"
+                    } else {
+                        showMessage = "不及格"
+                    }
+                    return showMessage
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

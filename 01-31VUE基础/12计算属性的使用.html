@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{fullname}}</h2>
+        <script>
+            /*
+                        在某些情况，我们需要对数据进行一些转化后再 显示，或者需要将多个数据结合起来进行显示。
+                        计算属性是写在实例的computed选项中
+                        */
+            const app = new Vue({
+                el: "#app",
+                data: {
+
+                    firstName: "csy",
+                    lastName: "123"
+                },
+                computed: { //计算属性
+                    fullname() {
+                        return this.firstName + " " + this.lastName;
+                    }
+                }
+            })
+        </script>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-show="isShowA">
+         <label for="username" draggable="true">用户账户：
+           <input type="text" id="username" placeholder="输入账户" key="username"></label>
+         
+        </span>
+        <span v-show="isShowB">
+          <label for= "emailname"    draggable="true">用户邮箱：
+            <input type="text " id="emailname " placeholder="输入邮箱 " key="emailname ">
+          </label>
+         </span>
+        <button @click="change ">切换类型</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app ",
+            data: {
+                message: "你好 ",
+                isShowA: true,
+                isShowB: false
+            },
+            methods: {
+                change() {
+                    let temp = null;
+                    temp = this.isShowA;
+                    this.isShowA = this.isShowB;
+                    this.isShowB = temp;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

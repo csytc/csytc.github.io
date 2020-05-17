@@ -1,0 +1,33 @@
+创建项目：
+vue create 项目名称
+
+? Please pick a preset: Manually select features            选择默认还是手动
+? Check the features needed for your project: Babel         选择所需要的项目特征，空格选择 
+? Where do you prefer placing config for Babel, ESLint, etc.? In dedicated config files   是否需要将这些文件放在一个文件夹里
+? Save this as a preset for future projects? Yes      是否将以上配置保存一个以备将来使用
+? Save preset as: csy     保存名称
+
+ 输入 vue ui  可以打开可视界面来配置
+ 如果要修改默认配置，要创建vue.config.js
+
+ 前端路由：
+ 路由就是通过互联网的网络把信息从源地址传输到目的地址的活动
+ 内网ip：只有再当前网络里面这个Ip才是有效的
+ 公网Ip：不会重复,只有一个，而内网Ip有许多，并且可以重复
+ 别人如果发送消息先会传到公网IP然后传向路由器，路由器再根据映射表【内网ip：电脑mac(地址序列号)】一一对应
+
+ 什么是前端渲染，什么是后端渲染：
+ 1.后端渲染：JSP java server page ,根据url的地址找到服务器对应内容，然后再后台直接写好页面，再把已经展示好的页面直接发送到
+ 浏览器上。后端路由：后端处理url和页面之间的映射关系
+
+ 2.前后端分离：后端只负责提供数据，不负责任何阶段内容
+ 前端渲染：浏览器中显示的网页中的大部分内容，都是由前端写的JS代码在浏览器中执行，最终渲染出来的网页
+ 随着ajax的出现，有了前后端分离的开发模式；
+ 后端只提供API来返回数据，前端通过Ajax获取数据，并且可以通过js将数据渲染到页面中。
+ 这样做最大的优点是前后端责任清晰，后端专注于数据上，前端专注于交互和可视化上。
+ 并且当移动端出现后，后端不需要进行任何处理，依然使用之前一套API即可
+
+ 3.单页面富应用阶段：
+ spa的主要特点就是在前后端分离的基础上加了一层前端路由。
+ 整个网站只有一个HTML页面，直接将一个html文件，css文件和js全部资源发送给服务器，然后
+ 根据页面上的用户操作的事件，根据前端路由把相关的js里面的内容展现出来

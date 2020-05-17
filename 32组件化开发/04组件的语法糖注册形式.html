@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn1></cpn1>
+        <cpn2></cpn2>
+    </div>
+    <script>
+        //1.全局组件注册的语法糖：主要是省去了调用Vue.extend()的步骤，而是可以直接使用一个对象来代替
+        //创建组件构造器
+        //注册组件
+        Vue.component("cpn1", {
+            template: `
+        <div>
+          <h2>我是谁</h2>
+          </div>
+      `
+        })
+
+        //注册局部组件语法糖
+
+        const app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            components: {
+                cpn2: {
+                    template: `
+        <div>
+          <h2>我是谁</h2>
+          </div>`
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

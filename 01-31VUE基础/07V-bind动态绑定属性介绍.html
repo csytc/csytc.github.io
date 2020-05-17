@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <img v-bind:src="imgUrl" alt="">
+        <a v-bind:href="url">百度一下</a>
+        <a :href="url">缩写</a>
+    </div>
+    <script>
+        /*
+                                前面学习的指令主要作用是将值插入到模板的内容中，
+                                但是除了内容需要动态来决定外，某些属性我们也希望动态来绑定
+                                比如动态绑定a元素的href属性
+                                动态绑定img元素的src属性
+                                这时候使用v-bind指令,缩写为 ":"
+                              */
+        const app = new Vue({
+            el: "#app",
+            data: {
+                imgUrl: "../天天生鲜/img/ad1.jpg",
+                url: "https://www.baidu.com"
+            }
+        })
+    </script>
+</body>
+
+</html>

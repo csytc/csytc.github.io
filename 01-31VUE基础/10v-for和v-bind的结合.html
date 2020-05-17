@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{message}}</h2>
+        <ul>
+            <li v-for="(item,index) in moveis" :class="{active:currentIndex === index}" @click="click(index)">{{item}}</li>
+        </ul>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "你好",
+                moveis: ["1", "2", "3", "4"],
+                isActive: false,
+                currentIndex: 0
+            },
+            methods: {
+                click: function(num) {
+                    this.currentIndex = num;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

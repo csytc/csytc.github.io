@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{counter}}</h2>
+        <button v-on:click="btnClick()">+</button>
+        <button v-on:click="btnClick2()">-</button>
+        <button @click="counter=0">清0</button>
+    </div>
+    <script>
+        /*
+                            监听用户发生的事件，比如点击，拖拽，键盘事件等
+                            v-on：
+                              作用：绑定事件监听器
+                              缩写：@
+                              参数：event
+                                                    */
+        const app = new Vue({
+            el: "#app",
+            data: {
+                counter: 0
+            },
+            methods: {
+                btnClick() {
+                    this.counter++
+                },
+                btnClick2() {
+                    this.counter--
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

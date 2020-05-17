@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn :cmovies="movies" :cmessage="message"></cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        <ul>
+          <li v-for="item in cmovies">{{item}}</li>
+        </ul>
+        <p>{{cmessage}}</p>
+      </div>
+    </template>
+    <script>
+        //父传子
+        const cpn = {
+            template: "#cpn",
+            //传入的是数组形式
+            // props: ["cmovies", "cmessage"],
+
+            //对象形式
+            props: {
+                //1.类型限制
+                //  cmovies:Array,
+                //  cmessage:String
+                //2.提供默认值
+                cmessage: {
+                    type: String,
+                    default: "aaa",
+                    required: true //表示传数据时，必须给cmessage传入值
+                },
+                cmovies: {
+                    type: Array,
+                    required: true
+                }
+            },
+            data() {
+                return {
+
+                }
+
+            }
+        }
+        const app = new Vue({
+            el: "#app",
+            data: {
+                movies: [1, 2, 3, 4],
+                message: "csy"
+            },
+            components: {
+                cpn
+            }
+        })
+    </script>
+</body>
+
+</html>

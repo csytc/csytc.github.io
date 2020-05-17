@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <!-- <h2 :class="active">{{message}}</h2> -->
+        <!-- <h2 v-bind:class="{类名1：value1,类名2：value2}">{{message}}</h2> -->
+        <!-- 可以再里面添加对象，如果说value设定为布尔值，哪个为true就显示为那个类名 -->
+        <h2 v-bind:class="{active:isActive,line:isLine}">{{message}}</h2>
+        <!-- 如果需要固定的class，就按原方法写，v-bind：class里面加入的class会与单个写的class叠加，例如： -->
+        <!-- <h2 class="message" v-bind:class="{active:isActive,line:isLine}">{{message}}</h2> -->
+        <h2 v-bind:class="getClassed()">{{message}}</h2>
+        <button @click="change()">按钮</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "你好",
+                //active: "active"
+                //一般情况下，把布尔值放到数据里
+                isActive: true,
+                isLine: false
+            },
+            methods: {
+                change: function() {
+                    this.isActive = !this.isActive;
+                },
+                getClassed: function() {
+                    return {
+                        active: this.isActive,
+                        line: this.isLine
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

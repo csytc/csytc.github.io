@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <button @click="btnClick()">按钮1</button>
+        <button @click="btnClick">按钮2</button>
+        <!-- 在事件定义时，写函数时省略的小括号，但是方法本身是需要一个参数的,这个时候vue会默认将浏览器产生的
+        event事件对象作为参数传入到方法中 -->
+        <button @click="btnClick2(123)">按钮3</button>
+        <button @click="btnClick2">按钮3</button>
+
+        <!-- 方法定义时，我们需要event对象，同时又需要其他参数 -->
+        <!-- 在调用方法时，如何手动的获取到浏览器参数的event对象：$event -->
+        <button @click="btnClick3(123,event)">按钮4</button>
+        <!--报错，event找不到-->
+        <button @click="btnClick3(123,$event)">按钮4</button>
+    </div>
+    <script>
+        /*
+                                              如果方法不需要额外的参数，那么方法后的()可以不加，但是注意
+                                              如果方法本身中有一个参数，那么会默认将原生事件event参数传递进去
+                                                                                                            */
+        const app = new Vue({
+            el: "#app",
+            data: {
+
+            },
+            methods: {
+                btnClick() {
+                    console.log("btnClick")
+                },
+                btnClick2(event) {
+                    console.log(event)
+                },
+                btnClick3(abc, event) {
+                    console.log(abc, event)
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

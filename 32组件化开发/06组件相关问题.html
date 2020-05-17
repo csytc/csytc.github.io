@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+    </div>
+    <template id="Cpn">
+    <div>
+      <h2>{{message}}</h2>
+      <p>内容</p>
+    </div>
+  </template>
+    <script>
+        /*
+                        组件可以访问Vue实例数据么？
+                      组件是一个单独功能模块的封装：
+                      这个模块有自己的html模板，也应该有属于自己的数据data，组件无法直接访问Vue实例中的data数据
+                组件自己的数据存放在：
+                  组件对象也有一个打他属性(也可以有methods属性)
+                  只是这个data属性必须是一个函数
+                  而且这个函数返回一个对象，对象内部保存着数据        
+              */
+        Vue.component("cpn", {
+            template: "#Cpn",
+            data() {
+                return {
+                    message: "abc"
+                }
+            }
+        })
+        let app = new Vue({
+            el: "#app"
+        })
+    </script>
+</body>
+
+</html>

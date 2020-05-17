@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- 通过methods实现 -->
+        <h2>{{getFullName()}}</h2>
+        <h2>{{getFullName()}}</h2>
+        <h2>{{getFullName()}}</h2>
+        <h2>{{getFullName()}}</h2>
+        <!-- 通过coumuted实现 -->
+        <h2>{{fullName}}</h2>
+        <h2>{{fullName}}</h2>
+        <h2>{{fullName}}</h2>
+        <h2>{{fullName}}</h2>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                firstName: "kobe",
+                lastName: "Bryant"
+            },
+            methods: {
+                getFullName: function() {
+                    console.log("getfullName") //函数调用了四次
+                    return this.firstName + " " + this.lastName
+                }
+            },
+            computed: {
+                fullName: function() {
+                    console.log("fullName") //函数调用了一次，性能高，如果下面数据不变化，就不会重新调用
+                    return this.firstName + " " + this.lastName
+                }
+            }
+
+
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //箭头函数：
+        //const app = (参数列表)=>{}
+        //放入两个参数：
+        const app = (num1, num2) => {
+                return num1 + num2
+            }
+            //放入一个参数：
+        const pow = num => {
+                return num * num
+            }
+            //函数中有多行代码
+        const test = () => {
+                console.log("hello");
+                console.log("csy");
+            }
+            //只有一行代码
+        const mul = (num1, num2) => num1 * num2
+        console.log(mul(2, 2))
+
+        //箭头函数的this指向最近作用域
+        //匿名函数中的this是window，而箭头函数中的this会往外找，如果外层还是箭头函数会再向外找
+        const obj = {
+            aaa() {
+                setTimeout(function() {
+                    console.log(this); //window
+                })
+            },
+            bbb() {
+                setTimeout(() => {
+                    console.log(this) //obj
+                })
+            }
+        }
+    </script>
+</body>
+
+</html>

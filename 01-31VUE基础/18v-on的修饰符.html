@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <div @click="divClick">
+            aaaa
+            <button @click.stop="btnClick">按钮</button>
+            <!--.stop修饰符的使用阻止冒泡.stop-->
+        </div>
+        <!-- prevent阻止默认事件 -->
+        <br>
+        <form action="https://www.baidu.com">
+            <input type="submit" value="提交" @click.prevent="subClick">
+        </form>
+        <!-- 监听某个键盘的键帽 -->
+        <input type="text" @keyup="keyClick">
+        <input type="text" @keyup.enter="keyClick">
+        <!--只会监听enter的点击-->
+
+        <!-- .once修饰符的使用 ,只希望用户第一次点击的时候有反应，后面点击无反应-->
+        <button @click.once="btn2Click">按钮2</button>
+    </div>
+    <script>
+        /*
+                                          阻止冒泡事件
+                                        */
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "nihao"
+            },
+            methods: {
+                btnClick() {
+                    console.log("btnClick")
+                },
+                divClick() {
+                    console.log("divClick")
+
+                },
+                subClick() {
+                    console.log("subclick")
+                },
+                keyClick() {
+                    console.log("keyup")
+                },
+                btn2Click() {
+                    console.log("btn2Click")
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

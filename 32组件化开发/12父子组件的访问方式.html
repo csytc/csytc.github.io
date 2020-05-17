@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <cpn></cpn>
+        <button @click="btnClick">按钮</button>
+        <cpn ref="aaa"></cpn>
+    </div>
+    <template id="cpn">
+      <div>
+        我是子组件
+      </div>
+    </template>
+    <script>
+        /*有时候我们需要父组件直接访问子组件，子组件直接访问父组件，或者是子组件访问根组件
+                  父组件访问子组件：使用$children或$refs
+                  子组件访问父组件：使用$parent*/
+        const app = new Vue({
+            el: "#app",
+            components: {
+                cpn: {
+                    template: "#cpn",
+                    methods: {
+                        showMessage() {
+                            console.log("showMessage")
+                        }
+                    }
+                }
+            },
+            methods: {
+                btnClick() {
+                    //1.$children
+                    // console.log(this.$children)
+                    // this.$children[0].showMessage();
+                    //2.$refs=>对象类型，默认是一个空的对象 在标签上写ref=""   一般用这个
+                    console.log(this.$refs.aaa.showMessage())
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

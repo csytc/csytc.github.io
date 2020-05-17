@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2 v-if="isShow">{{message}}</h2>
+        <h2 v-show="isShow">{{message}}</h2>
+        <!--v-show也可以决定要不要显示
+        注意：v-show控制的是节点的display属性，v-if是将节点删除了不存在dom中，
+      如果需要频繁的显示隐藏，使用v-show-->
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "你好",
+                isShow: true
+            }
+        })
+    </script>
+</body>
+
+</html>

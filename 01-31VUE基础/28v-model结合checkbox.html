@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 复选框分为两种情况：1.单个勾选框 2.多个勾选框 -->
+    <div id="app">
+        <label for="license" draggable="true"><!--draggle阻止文字被选中-->
+      <input type="checkbox" id="license" v-model="isAgree">许可协议
+    </label>
+        <h2>选择的值是：{{isAgree}}</h2>
+        <button :disabled="!isAgree">下一步</button>
+
+        <!-- checkbox多选框 -->
+        <label for="">
+          <input type="checkbox" value="篮球" v-model="hobbies">篮球
+          <input type="checkbox" value="足球" v-model="hobbies">足球
+          <input type="checkbox" value="羽毛球" v-model="hobbies">羽毛球
+          <input type="checkbox" value="乒乓球" v-model="hobbies">乒乓球
+        </label>
+        <h2>爱好是：{{hobbies}}</h2>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                isAgree: false,
+                hobbies: []
+            }
+        })
+    </script>
+</body>
+
+</html>

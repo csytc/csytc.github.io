@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <span v-if="isTrue">
+         <label for="username" >用户账户登录</label>
+         <input type="text" id="username" placeholder="输入账户" key ="username">
+       </span>
+        <span v-else>
+        <label for="Email" >用户邮箱登录</label>
+        <input type="text" id="Email" placeholder="输入邮箱" key="Email"><!--如果上下两个key不一样的话，就不会进行复用，上次传入的值不会显示在此次-->
+      </span>
+        <button @click="change">切换类型</button>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                isTrue: true
+            },
+            methods: {
+                change() {
+                    this.isTrue = !this.isTrue;
+
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>

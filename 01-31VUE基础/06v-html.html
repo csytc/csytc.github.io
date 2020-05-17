@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app" v-cloak>
+        <h2>{{message}}</h2>
+        <h2 v-html="url"></h2>
+        <h2 v-text="message"></h2>
+        <h2 v-pre>{{message}}</h2>
+        <h2></h2>
+    </div>
+    <script>
+        /*
+                                    v-html:将内容以html形式展现出来
+                                    v-text:将内容以文本形式展现出来（一般不用）
+                                    v-pre：内容是什么样就以什么样子展现，不做任何解析
+                                    v-cloak：在vue解析之前，div有一个属性v-cloak，当vue解析之后，会将这个属性删除
+                                    可以解决vue还未渲染dom时会展现出代码，可以解决屏幕闪动
+                                    */
+        const app = new Vue({
+            el: "#app",
+            data: {
+                message: "你好",
+                url: "<a href='http://www.baidu.com'>百度一下</a>"
+            }
+        })
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <!-- 和checkbox一样，select也分为单选和多选两种情况 -->
+    <div id="app">
+        <!-- 1.选择一个 -->
+        <select name="abc" v-model="fruit">
+      <option value="苹果" >苹果</option>
+      <option value="香蕉" >香蕉</option>
+      <option value="橘子" >橘子</option>
+      <option value="葡萄" >葡萄</option>
+      <option value="奥里给" >奥里给</option>
+    </select>
+        <h2>选择的是：{{fruit}}</h2>
+        <!-- 2.选择多个 -->
+        <select name="abc" v-model="fruits" multiple> 
+          <option value="苹果" >苹果</option>
+          <option value="香蕉" >香蕉</option>
+          <option value="橘子" >橘子</option>
+          <option value="葡萄" >葡萄</option>
+          <option value="奥里给" >奥里给</option>
+        </select>
+        <h2>选择的水果是：{{fruits}}</h2>
+    </div>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                fruit: "香蕉",
+                fruits: []
+            }
+        })
+    </script>
+</body>
+
+</html>

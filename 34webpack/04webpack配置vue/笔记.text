@@ -1,0 +1,46 @@
+我们希望在项目中使用VUEjs，那么必然需要对其有依赖，所以需要先进行安装
+注：因为我们后续是在实际项目中也会使用vue的，所以并不是开发时依赖：npm install vue --save
+就可以使用vue了,--save的意思是将包的信息记录在package.json中。
+
+需要在main.js中引入vue
+import Vue from "vue";这里会去本地modeles寻找vue文件
+
+报错原因：
+runtime-only：代码中，不可以有任何的template
+runtime-compiler：代码中，可以有template，因为有compiler可以用于编译template
+需要第二个环境，所以需要在webpack.config.js中配置resolve
+
+
+el和template的区别
+html模板在之后的开发中，并不希望手动的来频繁修改
+就可以定义template属性：
+在前面的vue实例中，我们定义了el属性，用于和index.html中的#app进行绑定，让Vue实例之后可以管理它其中的内容
+可以在vue实例定义一个template模板就可以在#app里展示template里面的内容
+
+然后可以新建一个.vue文件将组件模板写在里面，这样main.js中就不需要写组件的内容，直接import引入就行了
+在script里面写组件相关的脚本文件，style里面写组件相关的样式。
+
+此时npm run build 是不通过的，所以需要安装 vue 的loader：
+npm install --save-dev vue-loader vue-template-compiler
+然后再webpack.config.js里面进行配置:
+{
+  test: /\.vue$/,
+  use: [{
+      loader: "vue-loader",
+      options: {
+
+      }
+  }]
+}
+
+plugin的含义：
+plugin是插件的意思，通常是用于对某个现有架构的扩展。
+webpack中的插件，就是对webpack现有功能的各种扩展，比如打包优化，文件压缩等。
+
+loader和plugin的区别：
+loader主要用于转换某些类型的模块，是一个转换器；
+plugin是插件，它是对webpack本身的扩展，是一个扩展器。
+
+使用过程：
+1.通过npm安装需要使用的plugins(某些webpack已经内置的插件不需要安装)
+2.在webpack.config.js中配置插件

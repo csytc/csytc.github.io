@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <h2>{{fullName}}</h2>
+    </div>
+    <script>
+        /*
+                    每一个计算属性都有一个setter和getter，我们会使用get来获取内容并返回
+                */
+        const app = new Vue({
+            el: "#app",
+            data: {
+                firstName: "csy",
+                lastName: "abc"
+            },
+            computed: {
+                // fullName: function() {
+                //     return this.firstName + " " + this.lastName
+                // }
+                fullName: {
+                    set: function(newValue) {
+                        //计算属性一般没有set方法，只读属性，如果设置此属性的话，会调用set方法
+                        console.log("set被调用:" + newValue)
+                        let arr = newValue.split(" ");
+                        this.firstName = arr[0];
+                        this.lastName = arr[1];
+                    },
+                    get: function() {
+                        return this.firstName + " " + this.lastName;
+                    }
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
