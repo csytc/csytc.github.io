@@ -31,3 +31,13 @@ vue create 项目名称
  spa的主要特点就是在前后端分离的基础上加了一层前端路由。
  整个网站只有一个HTML页面，直接将一个html文件，css文件和js全部资源发送给服务器，然后
  根据页面上的用户操作的事件，根据前端路由把相关的js里面的内容展现出来
+
+ url的hash
+ URL的hash也就是锚点，本质上是改变window.location的href属性
+ 我们可以通过直接赋值location.hash来改变href,但是页面不发生刷新
+ location.hash = "...";
+ 或者history.pushState(data,titel,url);可以使用history.back()返回，类似栈
+ 或者history.replaceState({},"",url)  但是不能返回
+
+ history.go(-1),本质上就等于history.back()
+ history.forward()类似于history.go(1)
