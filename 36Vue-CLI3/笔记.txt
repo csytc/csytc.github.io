@@ -41,3 +41,17 @@ vue create 项目名称
 
  history.go(-1),本质上就等于history.back()
  history.forward()类似于history.go(1)
+
+ 使用vue-router的步骤：
+ 第一步：创建路由组件
+ 第二部：配置路由映射：组件和路径的映射关系
+ 第三步：使用路由：通过<router-link>(会被渲染成a标签)和<router-view>
+ <router-link to="">   属性to用于指定跳转路径
+  <router-link tag="">  属性tag可以指定次标签渲染成什么组件,不仅仅是a标签（li,button.....）
+  <router-link tag="" replace> 属性replace使得不能返回
+  并且可以在index.js里面的router实例里使用linkActiveClass来设置激活的class
+
+动态路由：
+某些情况下，一个页面的path路径可能是不确定的，比如我们进入用户界面时，希望是如下路径：
+/user/aaa或/user/bbb
+这种path和component的匹配关系，我们称之为动态路由
