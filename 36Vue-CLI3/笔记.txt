@@ -81,4 +81,17 @@ vue-router参数传递：
 router和route的区别：route是自己配置的路径，是当前活跃的路由；router则是整个项目的路由
 
 导航守卫：监听从哪一部分跳到哪一部分
-在router 中
+在router 中使用
+router.beforeEach((to, from, next) => {//当从一个路由跳到另一个路由就会执行此函数
+        //从from跳转到to
+        document.title = to.matched[0].meta.title;
+        console.log(to)
+        next()
+    })
+
+keep-alive:是Vue内置的一个组件，可以使被包含的组件保留状态，或避免重新渲染，避免组件频繁被销毁和创建
+router-view 也是一个组件，如果直接被包在keep-alive里面，所有的、路径匹配到的视图组件都会被缓存
+activated()：组件激活时调用；和deactivated()：不在活跃时调用；生命周期函数只有在该组件被保持了状态使用了keep-alive才能使用
+keep-alive有两个属性：
+include：字符串或正则表达式，只有匹配的组件会被缓存。
+exclude：字符串和正则表达式，任何匹配的组件都不会被缓存。
