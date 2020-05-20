@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //两个请求都完成后才能完成需求
+        // let result1 = false;
+        // let result2 = false
+        // //请求1：
+        //  $ajax({
+        //    url:"",
+        //    success:function(){
+        //      console.log("结果1")
+        //      result1 = true;
+        //      handelResult()
+        //    }
+        //  })
+        //  //请求2：
+        //  $ajax({
+        //    url:"",
+        //    success:function(){
+        //      console.log("结果2")
+        //      result2 = true;
+        //      handelResult()
+        //    }
+        //  })
+        //  function handelResult(){
+        //   if(result1&&result2){
+        //     //
+        //   }
+        //  }
+
+        //会自动判断里面的网络请求是否都完成，如果都完成则会执行then
+        Promise.all([
+            new Promise((resolve, reject) => {
+                $ajax({
+                    url: "url1",
+                    success: function(data) {
+                        console.log("结果1")
+                        resolve(data);
+                    }
+                })
+            }),
+            new Promise((resolve, reject) => {
+                $ajax({
+                    url: "url",
+                    success: function(data) {
+                        console.log("结果2")
+                        resolve(data)
+                    }
+                })
+            })
+        ]).then(result => {
+            result[0], //保存着第一个请求
+                result[1] //保存着第二个请求
+        })
+    </script>
+</body>
+
+</html>
