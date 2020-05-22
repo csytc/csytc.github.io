@@ -1,0 +1,25 @@
+npm install axios --save
+
+vue中发送网络请求有非常多的方式：
+1.传统的ajax是基于XMLHttpRequest
+2.jquery-Ajax
+3.vue1.x的时候，有一个插件vue-resource
+4.axios框架
+
+在前端开发中，一种常见的网络请求方式就是jsonp
+使用jsonp的主要原因往往是为了解决跨域访问的问题。
+jsonp的核心在于通过<script>标签的src来帮助我们请求数据。
+原因是我们的项目部署在domain1.com服务器上时，是不能直接访问domain2.com服务器上的资料的
+这个时候，我们利用<script>标签的src帮助我们去服务器请求到数据，将数据当作一个js的函数来执行，并且执行的过程中传入我们
+需要的json
+所以封装jsonp的核心就在于我们监听window上的jsonp进行回调时的名称
+
+axios的特点：
+1.在浏览器发送XMLHttpRequest请求
+2.在node.js中发送http请求
+3.支持Promise API
+4.拦截请求和响应
+5.转换请求和响应数据
+
+ 如何使用拦截器：
+ axios提供了拦截器，用于我们在发送每次请求或者得到响应后，进行对应的处理
