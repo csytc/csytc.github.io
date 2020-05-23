@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="vue.js"></script>
+    <style>
+        .active {
+            color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app">
+        <cpn :cmessage="message" :cage="age"></cpn>
+    </div>
+    <template id="cpn">
+        <div>
+            <h2>我是组件</h2>
+            <p>我是组件内容{{cmessage}}</p>
+            <P>年龄：{{cage}}</P>
+        </div>
+    </template>
+    <script>
+        const cpn = {
+            template: "#cpn",
+            props: {
+                cmessage: {
+                    type: String,
+                    require: true
+                },
+                cage: {
+                    type: Number,
+                    require: true
+                }
+            }
+        }
+        new Vue({
+            el: "#app",
+            data() {
+                return {
+                    sex: "男",
+                    message: "哈哈哈",
+                    age: 10
+                }
+            },
+            components: {
+                cpn
+            }
+
+
+
+        })
+    </script>
+</body>
+
+</html>
